@@ -44,3 +44,7 @@ https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a148
 
 11. por esto creamos un componente especial que me facilite el tipado hook/store.ts y no tener que estar indicando el tipo constantemente a todos los store en mis componentes.
 Basicamente ahora ya no usaremos el useSelector, ya que el no sabe que estado tiene, por lo que usaremos el customHook que si sabe el tipo del estado que tiene
+
+12. Creamos nuestro primer Reducer que es eliminar
+
+13. Exportamos la accion de eliminar
