@@ -39,3 +39,8 @@ https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a148
 8. Leemos la store que creamos, osea el slice. Esto lo hacemos en store/index.ts
 
 9. Nos vamos a ListOfUsers y vamos a leer la store. Logramos leer el estado global usando el useSelector
+
+10. Redux tiene problemas con los tipados por eso salta un error en el componente que no reconoce el tipo de store.
+
+11. por esto creamos un componente especial que me facilite el tipado hook/store.ts y no tener que estar indicando el tipo constantemente a todos los store en mis componentes.
+Basicamente ahora ya no usaremos el useSelector, ya que el no sabe que estado tiene, por lo que usaremos el customHook que si sabe el tipo del estado que tiene
