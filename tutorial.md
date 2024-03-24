@@ -35,3 +35,7 @@ Por ejemplo si queremos borrar un usuario el reducer dice: bueno quieres borrar 
 Los reducers recuperan el estado actual, y con la accion que le ha llegado por medio del dispatch, realiza los calculos y crea un nuevo estado
 
 https://redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif
+
+8. Leemos la store que creamos, osea el slice. Esto lo hacemos en store/index.ts
+
+9. Nos vamos a ListOfUsers y vamos a leer la store. Logramos leer el estado global usando el useSelector
