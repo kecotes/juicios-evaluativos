@@ -4,11 +4,7 @@ Esta es una apliación desarrollada para la asignatura Desarrollo de Aplicacione
 
 ##### Captura de pantalla:
 
-[<span>![</span><span>Captura de pantalla de app juicios evaluativos</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/parzibyte/WaterPy/master/assets/ImagenV1.png</span><span>)</span>](https://github.com/kecotes/juicios-evaluativos/blob/bdbfe9e4d649ab02a7cd0b7bb96558a1edaa977f/captura.png)
-
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Pantallazo de la app](https://github.com/kecotes/juicios-evaluativos/blob/92fb0f8d9d2ee60a2c4af0494b3e2593f1a2db77/captura.png)
 
 ## Instalación
 
