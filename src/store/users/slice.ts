@@ -3,27 +3,43 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 const DEFAULT_STATE = [
     {
     id: "1",
-    name: 'John Doe',
+    name: 'Juan Mengual',
     email: 'jhoni@gmail.com',
-    github: 'midudev'
+    act1: 'Levantar servidor',
+    act2: 'Mantener servidor',
+    act3: 'Encender server',
+    firstTime: '7:00:00',
+    endTime: '22:00:00'
   },
   {
     id: '2',
-    name: 'Marianzco',
+    name: 'Marianzco Gonzales',
     email: 'maripi@gmail.com',
-    github: 'kecotes'
+    act1: 'Activar servidor',
+    act2: 'Mantener servidor',
+    act3: 'Mejorar server',
+    firstTime: '7:00:00',
+    endTime: '22:00:00'
   },
   {
     id: '3',
-    name: 'Cazapumaaa',
+    name: 'Cazapumaaa Velez',
     email: 'casasi@gmail.com',
-    github: 'migithub'
+    act1: 'Levantar Aplicion',
+    act2: 'Mantener APP',
+    act3: 'Encender Dependencias',
+    firstTime: '7:00:00',
+    endTime: '13:00:00'
   },
   {
     id: '4',
-    name: 'Pelmarazo',
+    name: 'Manuel Pelmarazo',
     email: 'pelma@gmail.com',
-    github: 'migithub'
+    act1: 'Poner Musica',
+    act2: 'Atender Clientes',
+    act3: 'Encender Luces',
+    firstTime: '7:00:00',
+    endTime: '22:00:00'
   },
 ];
 
@@ -32,7 +48,11 @@ export type UserId = string;
 export interface User {
     name: string;
     email: string;
-    github: string;
+    act1: string;
+    act2: string;
+    act3: string;
+    firstTime: string;
+    endTime: string;
 }
 
 export interface UserWithId extends User {
@@ -60,10 +80,16 @@ export const usersSlice = createSlice({
         deleteUserById: (state, action: PayloadAction<UserId>) => {
             const id = action.payload;
             return state.filter((user) => user.id !== id)
+        },
+        rollbackUser: (state, action: PayloadAction<UserWithId>) => {
+          const isUserAlreadyDefined = state.some(user => user.id === action.payload.id)
+          if (!isUserAlreadyDefined) {
+            state.push(action.payload)
+          }
         }
     },
 })
 
 export default usersSlice.reducer;
 
-export const { addNewUser, deleteUserById } = usersSlice.actions;
+export const { addNewUser, deleteUserById, rollbackUser } = usersSlice.actions;

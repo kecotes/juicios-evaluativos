@@ -16,30 +16,38 @@ export function CreateNewUser() {
 
 		const name = formData.get("name") as string
 		const email = formData.get("email") as string
-		const github = formData.get("github") as string
+		const act1 = formData.get("act1") as string
+		const act2 = formData.get("act2") as string
+		const act3 = formData.get("act3") as string
+		const firstTime = formData.get("firstTime") as string
+		const endTime = formData.get("endTime") as string
 
-		if (!name || !email || !github) {
+		if (!name || !email || !act1 || !act2 || !act3 || !firstTime || !endTime) {
 			// validaciones que tu quieras
 			return setResult("ko")
 		}
 
-		addUser({ name, email, github })
+		addUser({ name, email, act1, act2, act3, firstTime, endTime })
 		setResult("ok")
 		form.reset()
 	}
 
 	return (
 		<Card style={{ marginTop: "16px" }}>
-			<Title>Create New User</Title>
+			<Title>Registrar las actividades que realiza el trabajador</Title>
 
 			<form onSubmit={handleSubmit} className="">
-				<TextInput name="name" placeholder="Aquí el nombre" />
-				<TextInput name="email" placeholder="Aquí el email" />
-				<TextInput name="github" placeholder="Aquí el usuario de GitHub" />
+				<TextInput name="name" placeholder="Nombre del trabajador" />
+				<TextInput name="email" placeholder="Correo" />
+				<TextInput name="act1" placeholder="1-Actividades que realizo" />
+				<TextInput name="act2" placeholder="2-Actividades que realizo" />
+				<TextInput name="act3" placeholder="3-Actividades que realizo" />
+				<TextInput name="firstTime" placeholder="tiempo inicio" />
+				<TextInput name="endTime" placeholder="tiempo en que finalizo" />
 
 				<div>
 					<Button type="submit" style={{ marginTop: "16px" }}>
-						Crear usuario
+						Crear Trabajador
 					</Button>
 					<span>
 						{result === "ok" && (
