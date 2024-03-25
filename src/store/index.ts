@@ -9,7 +9,7 @@ import userReducer from './users/slice';
 // Cada metodo pasa en un momento distinto y necesitamos poder trabajar en un momento especifico
 // nuestra store, next hace que pasemos al siguiente evento y action la accion
 const persistanceLocalStorageMiddleware: Middleware = (store) => (next) => (action) => {
-	next(action);
+	next(action); // Cualquier accion que hagas luego actualiza el localstorage
 	localStorage.setItem("__redux__state__", JSON.stringify(store.getState()));
 };
 
