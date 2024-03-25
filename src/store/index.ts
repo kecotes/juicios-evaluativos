@@ -1,10 +1,24 @@
 // La store es donde guardamos todo
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, type Middleware } from '@reduxjs/toolkit';
 import userReducer from './users/slice';
+
+// Un middleware es un funcion que recupera la store, que tiene que devolver una funcion
+// que recupera un metodo next que devuelve una funcion que devuelve una funcion que recupera un metodo action
+// store es una funcion que devuelve de next en adelante, next devuelve de action en adelante y action lo del corchete
+
+// Cada metodo pasa en un momento distinto y necesitamos poder trabajar en un momento especifico
+// nuestra store, next hace que pasemos al siguiente evento y action la accion
+const persistanceLocalStorageMiddleware: Middleware = (store) => (next) => (action) => {
+	next(action);
+	localStorage.setItem("__redux__state__", JSON.stringify(store.getState()));
+};
 
 export const store = configureStore({
     reducer: {
-        users: userReducer
+        users: userReducer,
+    },
+    middleware: (getDefaultMiddleware) => {
+        return getDefaultMiddleware().concat(persistanceLocalStorageMiddleware)
     }
 });
 

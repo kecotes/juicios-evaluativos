@@ -47,4 +47,13 @@ Basicamente ahora ya no usaremos el useSelector, ya que el no sabe que estado ti
 
 12. Creamos nuestro primer Reducer que es eliminar
 
-13. Exportamos la accion de eliminar
+13. Creamos nuestro custom hook que podremos usar para enviarle el evento de eliminar y el eliminará
+
+### Middleware
+Es algo que se ejecuta en mitad de algo, captura en un momento contreto, en el caso de redux, cuando esta haciendo el dispatch al store.
+Podremos capturar eso que se esta envando al store antes de y decidir que operacion aplicar.
+
+Nos permite cambiar la funcionalidad de lo que hace redux de forma transparente.
+
+
+14. 

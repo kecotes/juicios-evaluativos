@@ -47,7 +47,7 @@ export const usersSlice = createSlice({
             const id = action.payload;
             return state.filter((user) => user.id !== id)
         }
-    }
+    },
 })
 
 export default usersSlice.reducer;
