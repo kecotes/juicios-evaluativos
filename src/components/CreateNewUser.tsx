@@ -15,6 +15,7 @@ export function CreateNewUser() {
 		const formData = new FormData(form)
 
 		const name = formData.get("name") as string
+		const password = formData.get("password") as string
 		const email = formData.get("email") as string
 		const act1 = formData.get("act1") as string
 		const act2 = formData.get("act2") as string
@@ -27,7 +28,7 @@ export function CreateNewUser() {
 			return setResult("ko")
 		}
 
-		addUser({ name, email, act1, act2, act3, firstTime, endTime })
+		addUser({ name, password, email, act1, act2, act3, firstTime, endTime })
 		setResult("ok")
 		form.reset()
 	}
@@ -37,7 +38,8 @@ export function CreateNewUser() {
 			<Title>Registrar las actividades que realiza el trabajador</Title>
 
 			<form onSubmit={handleSubmit} className="">
-				<TextInput name="name" placeholder="Nombre del trabajador" />
+				<TextInput name="name" placeholder="Usuario del trabajador" />
+				<TextInput name="password" placeholder="Contraseña del trabajador" />
 				<TextInput name="email" placeholder="Correo" />
 				<TextInput name="act1" placeholder="1-Actividades que realizo" />
 				<TextInput name="act2" placeholder="2-Actividades que realizo" />

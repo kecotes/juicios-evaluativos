@@ -1,10 +1,12 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 const DEFAULT_STATE = [
     {
     id: "1",
     name: 'Juan Mengual',
+    password: '1234',
     email: 'jhoni@gmail.com',
+    token: null,
     act1: 'Levantar servidor',
     act2: 'Mantener servidor',
     act3: 'Encender server',
@@ -14,6 +16,8 @@ const DEFAULT_STATE = [
   {
     id: '2',
     name: 'Marianzco Gonzales',
+    password: '1234',
+    token: null,
     email: 'maripi@gmail.com',
     act1: 'Activar servidor',
     act2: 'Mantener servidor',
@@ -24,6 +28,8 @@ const DEFAULT_STATE = [
   {
     id: '3',
     name: 'Cazapumaaa Velez',
+    password: '1234',
+    token: null,
     email: 'casasi@gmail.com',
     act1: 'Levantar Aplicion',
     act2: 'Mantener APP',
@@ -34,6 +40,8 @@ const DEFAULT_STATE = [
   {
     id: '4',
     name: 'Manuel Pelmarazo',
+    password: '1234',
+    token: null,
     email: 'pelma@gmail.com',
     act1: 'Poner Musica',
     act2: 'Atender Clientes',
@@ -47,12 +55,14 @@ export type UserId = string;
 
 export interface User {
     name: string;
-    email: string;
-    act1: string;
-    act2: string;
-    act3: string;
-    firstTime: string;
-    endTime: string;
+    password: string;
+    token?: string,
+    email?: string;
+    act1?: string;
+    act2?: string;
+    act3?: string;
+    firstTime?: string;
+    endTime?: string;
 }
 
 export interface UserWithId extends User {
@@ -68,6 +78,17 @@ const initialState: UserWithId[] = (() => {
   }
   return DEFAULT_STATE;
 })();
+
+
+const loginApi = createAsyncThunk(
+  'users/loginApi',
+  async({name, password}) => {
+    const request = await axios.post(`http://localhost:8000/api/auth`, {name, password})
+    const response = await request.data.data;
+    localStorage.setItem('user', JSON.stringify(response))
+    return response;
+  }
+);
 
 export const usersSlice = createSlice({
     name: "users",
@@ -88,6 +109,12 @@ export const usersSlice = createSlice({
           }
         }
     },
+    extraReducers: (builder) => {
+      builder
+      .addCase(loginApi.pending, (state, action) => {
+        state.token = action.payload
+      })
+    }
 })
 
 export default usersSlice.reducer;
